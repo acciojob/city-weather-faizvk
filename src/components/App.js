@@ -1,22 +1,20 @@
 import React, { useState } from "react";
 import "./styles.css";
+import "regenerator-runtime/runtime";
 
 export default function App() {
   const [query, setQuery] = useState("");
   const [weather, setWeather] = useState(null);
   const API_KEY = "b0f9c77dda3c73af071e844da511aa79";
 
-  const fetchWeather = async () => {
+  const fetchWeather = () => {
     if (!query) return;
-    try {
-      const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&appid=${API_KEY}`
-      );
-      const data = await response.json();
-      setWeather(data);
-    } catch (err) {
-      console.error(err);
-    }
+    fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&appid=${API_KEY}`
+    )
+      .then((res) => res.json())
+      .then((data) => setWeather(data))
+      .catch((err) => console.error(err));
   };
 
   const handleKeyPress = (e) => {
