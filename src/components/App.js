@@ -13,7 +13,10 @@ export default function App() {
       `https://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&appid=${API_KEY}`
     )
       .then((res) => res.json())
-      .then((data) => setWeather(data))
+      .then((data) => {
+        setWeather(data);
+        setQuery("");
+      })
       .catch((err) => console.error(err));
   };
 
