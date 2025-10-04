@@ -4,7 +4,7 @@ import "./styles.css";
 export default function App() {
   const [query, setQuery] = useState("");
   const [weather, setWeather] = useState(null);
-  const API_KEY = "YOUR_API_KEY_HERE";
+  const API_KEY = "b0f9c77dda3c73af071e844da511aa79";
 
   const fetchWeather = async () => {
     if (!query) return;
